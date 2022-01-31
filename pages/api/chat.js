@@ -17,7 +17,7 @@ export default function handler(req, res) {
 
     messages = [{ user: user, message: message, date: date }, ...messages];
 
-    res.socket.server.io.emit('message', user, message, date);
+    res?.socket?.server?.io?.emit('message', user, message, date);
 
     return res.status(200).json({ message: 'Message sent' });
   }
