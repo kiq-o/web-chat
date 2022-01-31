@@ -15,6 +15,14 @@ import { useContext, useEffect, useState } from 'react';
 import SocketIOClient from 'socket.io-client';
 import { AuthContext, getCookie } from '../src/contexts/AuthContext';
 
+export /*default*/ function Comeco({ initialMessages }) {
+  return (
+    <>
+      <div>teste</div>
+    </>
+  );
+}
+
 export default function Home({ initialMessages }) {
   const router = useRouter();
 
@@ -29,7 +37,7 @@ export default function Home({ initialMessages }) {
       router.push('/login');
     }
 
-    const socket = SocketIOClient.connect('http://localhost:3000', {
+    const socket = SocketIOClient.connect(process.env.NEXT_PUBLIC_API_URL, {
       path: '/api/socketio',
     });
 
@@ -142,7 +150,7 @@ export default function Home({ initialMessages }) {
                 ...messages,
               ]);
 
-              fetch(process.env.API_URL + '/api/chat', {
+              fetch(process.env.NEXT_PUBLIC_API_URL + '/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -167,7 +175,8 @@ export default function Home({ initialMessages }) {
 }
 
 Home.getInitialProps = async (ctx) => {
-  const res = await fetch(process.env.API_URL + '/api/chat');
+  console.log(process.env.NEXT_PUBLIC_API_URL);
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/api/chat');
   const json = await res.json();
 
   return { initialMessages: json };

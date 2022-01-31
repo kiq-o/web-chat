@@ -64,6 +64,7 @@ export default function Login() {
                       loggedIn.style.display = 'inherit';
                       login(userName);
                       router.push('/');
+                      //router.push('/');
                     }
                   }}
                 >

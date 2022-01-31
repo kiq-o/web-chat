@@ -30,6 +30,7 @@ export const AuthContextProvider = ({ children }) => {
   );
 };
 
+/*
 export function getCookie(cname, fromWhere) {
   let name = cname + '=';
   let decodedCookie = decodeURIComponent(fromWhere);
@@ -46,3 +47,4 @@ export function getCookie(cname, fromWhere) {
   }
   return '';
 }
+*/
